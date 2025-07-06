@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FormHub",
+  title: "FoxChat.ai",
   description:
     "Automate customer communication and increase sales with AI bots for any industry.",
 };
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="apple-mobile-web-app-title" content="FormHub" />
+        <meta name="apple-mobile-web-app-title" content="FoxChat.ai" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
