@@ -1,5 +1,12 @@
 import React from "react";
 import styles from "./page.module.scss";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 const plans = [
   {
@@ -38,6 +45,21 @@ const HomePage: React.FC = () => {
           <a href="#industries">Industries</a>
           <a href="#plans">Plans</a>
           <a href="#contact">Contacts</a>
+        </nav>
+        <nav>
+          <SignedOut>
+            <div className={styles.buttonsWrapper}>
+              <SignInButton>
+                <button className={styles.signInButton}>Sign in</button>
+              </SignInButton>
+              <SignUpButton>
+                <button className={styles.signUpButton}>Sign Up</button>
+              </SignUpButton>
+            </div>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </SignedOut>
         </nav>
       </header>
 

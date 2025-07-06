@@ -40,6 +40,40 @@
   color: #ff6a00;
 }
 
+.header {
+  .buttonsWrapper {
+    display: flex;
+    column-gap: 20px;
+  }
+  .signInButton {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    transition: 0.2s;
+
+    &:hover {
+      color: #ff6a00;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+  }
+  .signUpButton {
+    background-color: #ff6a00;
+    border: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: #ff8e3d;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+  }
+}
+
 .hero {
   background: linear-gradient(135deg, #ff6a00, #ee0979);
   padding: 120px 40px;
