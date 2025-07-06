@@ -1,0 +1,15 @@
+.wrapper {
+  background-color: #ff6a00;
+  border: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #ff8e3d;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+}

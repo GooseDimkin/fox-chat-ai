@@ -7,6 +7,7 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
+import Button from "@/components/button/button";
 
 const plans = [
   {
@@ -53,7 +54,7 @@ const HomePage: React.FC = () => {
                 <button className={styles.signInButton}>Sign in</button>
               </SignInButton>
               <SignUpButton>
-                <button className={styles.signUpButton}>Sign Up</button>
+                <Button size="small">Sign Up</Button>
               </SignUpButton>
             </div>
           </SignedOut>
@@ -70,7 +71,9 @@ const HomePage: React.FC = () => {
             Automate customer communication and increase sales with AI bots for
             any industry.
           </p>
-          <button className={styles.ctaButton}>Start now</button>
+          <Button size="large" width="auto">
+            Get started — it's free
+          </Button>
         </div>
       </section>
 
@@ -98,7 +101,7 @@ const HomePage: React.FC = () => {
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <button className={styles.ctaButtonOutline}>Select</button>
+              <Button size="medium">Select</Button>
             </div>
           ))}
         </div>
