@@ -56,10 +56,10 @@ const HomePage: React.FC = () => {
                 <button className={styles.signUpButton}>Sign Up</button>
               </SignUpButton>
             </div>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
           </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </nav>
       </header>
 
