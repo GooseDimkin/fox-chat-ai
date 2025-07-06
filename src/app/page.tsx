@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
       </section>
 
       <footer id="contact" className={styles.footer}>
-        <p>© 2025 ConsultBot — All rights reserved.</p>
+        <p>© 2025 FoxChat.ai — All rights reserved.</p>
       </footer>
     </div>
   );
