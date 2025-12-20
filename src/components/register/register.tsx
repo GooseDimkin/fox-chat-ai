@@ -4,7 +4,15 @@ import axios from "axios";
 import styles from "./register.module.scss";
 import Button from "../_elements/button/button";
 
-export default function Register() {
+interface IRegister {
+  handleClose: () => void;
+  handleSignInModalOpen: () => void;
+}
+
+export default function Register({
+  handleClose,
+  handleSignInModalOpen,
+}: IRegister) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -31,11 +39,16 @@ export default function Register() {
     }
   };
 
+  const handleCloseModalAndOpenSignIn = () => {
+    handleClose();
+    handleSignInModalOpen();
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.header}>
         <p>Already a member?</p>
-        <button>Sign In</button>
+        <button onClick={handleCloseModalAndOpenSignIn}>Sign In</button>
       </div>
       <div className={styles.field}>
         <input

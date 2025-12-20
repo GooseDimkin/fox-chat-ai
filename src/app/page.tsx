@@ -69,7 +69,11 @@ const HomePage: React.FC = () => {
               Automate customer communication and increase sales with AI bots
               for any industry.
             </p>
-            <Button size="large" width="auto">
+            <Button
+              size="large"
+              width="auto"
+              onClick={() => setIsRegisterOpen(true)}
+            >
               Get started — it's free
             </Button>
           </div>
@@ -114,7 +118,10 @@ const HomePage: React.FC = () => {
         onClose={() => setIsRegisterOpen(false)}
         title="Sign Up"
       >
-        <Register />
+        <Register
+          handleClose={() => setIsRegisterOpen(false)}
+          handleSignInModalOpen={() => setIsLoginOpen(true)}
+        />
       </Modal>
       <Modal
         isOpen={isLoginOpen}
