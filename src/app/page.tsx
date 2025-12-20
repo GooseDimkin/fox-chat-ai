@@ -7,7 +7,8 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
-import Button from "@/components/button/button";
+import Button from "@/components/_elements/button/button";
+import Register from "@/components/register/register";
 
 const plans = [
   {
@@ -47,6 +48,7 @@ const HomePage: React.FC = () => {
           <a href="#plans">Plans</a>
           <a href="#contact">Contacts</a>
         </nav>
+        <Register />
         <nav>
           <SignedOut>
             <div className={styles.buttonsWrapper}>
