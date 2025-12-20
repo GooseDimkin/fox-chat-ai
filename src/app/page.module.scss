@@ -1,4 +1,4 @@
-@use "/src/styles/varriables" as *;
+@use "@/styles/variables" as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 .app {
@@ -26,8 +26,9 @@
   align-items: center;
   background: rgba(255, 255, 255, 0);
   box-shadow: 0 0px 1px rgb(141, 141, 141);
+
+  -webkit-backdrop-filter: blur(50px) saturate(160%);
   backdrop-filter: blur(50px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
 }
 
 .header img {
