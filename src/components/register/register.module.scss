@@ -1,3 +1,5 @@
+@use "/src/styles/varriables" as *;
+
 .form {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,7 @@
   button {
     background-color: transparent;
     border: none;
-    color: #ff6a00;
+    color: $mainOrange;
     cursor: pointer;
 
     &:hover {
@@ -111,7 +113,7 @@
   line-height: 1.4;
 
   span {
-    color: #ff6a00;
+    color: $mainOrange;
     font-weight: 500;
     cursor: pointer;
 

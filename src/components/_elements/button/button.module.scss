@@ -1,3 +1,5 @@
+@use "/src/styles/varriables" as *;
+
 .wrapper {
   border: none;
   font-size: 16px;
@@ -13,20 +15,20 @@
 }
 
 .default {
-  background-color: #ff6a00;
+  background-color: $mainOrange;
   color: #fff;
 
   &:hover {
     background-color: #ff8e3d;
-    box-shadow: 0px 0px 15px 5px #ff6a00;
+    box-shadow: 0px 0px 15px 5px $mainOrange;
   }
 }
 
 .secondary {
-  background-color: #558EFF;
+  background-color: $secondaryColor;
   color: #fff;
 
   &:hover {
-    background-color: #80aaff;
+    background-color: $secondaryHover;
   }
 }
