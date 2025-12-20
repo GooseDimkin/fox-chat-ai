@@ -1,5 +1,4 @@
 .wrapper {
-  background-color: #ff6a00;
   border: none;
   font-size: 16px;
   padding: 10px 15px;
@@ -7,9 +6,27 @@
   transition: 0.2s;
 
   &:hover {
-    background-color: #ff8e3d;
     border-radius: 15px;
     cursor: pointer;
     transition: 0.2s;
+  }
+}
+
+.default {
+  background-color: #ff6a00;
+  color: #fff;
+
+  &:hover {
+    background-color: #ff8e3d;
+    box-shadow: 0px 0px 15px 5px #ff6a00;
+  }
+}
+
+.secondary {
+  background-color: #558EFF;
+  color: #fff;
+
+  &:hover {
+    background-color: #80aaff;
   }
 }

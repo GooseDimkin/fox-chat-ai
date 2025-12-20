@@ -112,7 +112,7 @@ const HomePage: React.FC = () => {
       <Modal
         isOpen={isRegisterOpen}
         onClose={() => setIsRegisterOpen(false)}
-        title="Register"
+        title="Sign Up"
       >
         <Register />
       </Modal>

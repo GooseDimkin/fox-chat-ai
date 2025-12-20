@@ -5,4 +5,6 @@ export interface IButton {
   children?: ReactNode;
   size?: "small" | "medium" | "large";
   width?: string;
+  disabled?: boolean;
+  color?: "default" | "secondary"
 }

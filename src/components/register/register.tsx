@@ -2,6 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from "./register.module.scss";
+import Button from "../_elements/button/button";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -33,10 +34,9 @@ export default function Register() {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.field}>
-        <label>Email</label>
         <input
           type="email"
-          placeholder="you@example.com"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -44,10 +44,9 @@ export default function Register() {
       </div>
 
       <div className={styles.field}>
-        <label>Password</label>
         <input
           type="password"
-          placeholder="Minimum 6 characters"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -57,9 +56,9 @@ export default function Register() {
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <button className={styles.submit} disabled={loading}>
+      <Button disabled={loading} size="large" color="secondary">
         {loading ? "Creating account..." : "Create account"}
-      </button>
+      </Button>
 
       <p className={styles.footerText}>
         By signing up you agree to our <span>Terms</span> & <span>Privacy</span>
