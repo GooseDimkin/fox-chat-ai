@@ -33,6 +33,10 @@ export default function Register() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.header}>
+        <p>Already a member?</p>
+        <button>Sign In</button>
+      </div>
       <div className={styles.field}>
         <input
           type="email"

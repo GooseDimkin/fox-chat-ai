@@ -5,6 +5,26 @@
   align-items: center;
 }
 
+.header {
+  display: flex;
+  gap: 5px;
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: #558eff;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    color: white;
+  }
+}
+
 .field {
   position: relative;
   display: flex;
