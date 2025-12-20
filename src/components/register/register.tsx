@@ -60,7 +60,7 @@ export default function Register() {
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <Button disabled={loading} size="large" color="secondary">
+      <Button disabled={loading} size="large">
         {loading ? "Creating account..." : "Create account"}
       </Button>
 
