@@ -1,0 +1,72 @@
+@use "@/styles/variables" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  margin: 20px 20px 0px 20px;
+  border-radius: 20px;
+  padding: 13px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 0px 1px rgb(141, 141, 141);
+
+  -webkit-backdrop-filter: blur(50px) saturate(160%);
+  backdrop-filter: blur(50px) saturate(160%);
+}
+
+.logoContainer {
+  width: 240px;
+}
+
+.header img {
+  height: 50px;
+}
+
+.header h1 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+.header nav a {
+  color: #ddd;
+  margin-left: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+  color: $mainOrange;
+}
+
+.header {
+  .buttonsWrapper {
+    display: flex;
+    column-gap: 20px;
+  }
+}
+
+@media (max-width: 930px) {
+  .logoContainer {
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 13px 10px;
+    border-radius: 5px;
+
+    img {
+      height: 20px;
+      width: 50px;
+    }
+  }
+}

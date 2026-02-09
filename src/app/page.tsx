@@ -1,11 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./page.module.scss";
-import Register from "@/components/register/register";
-import Modal from "@/components/_elements/modal/modal";
-import Login from "@/components/login/login";
 import { Button } from "antd";
-import { CompassOutlined, UserOutlined } from "@ant-design/icons";
+import Header from "@/components/header/header";
 
 const plans = [
   {
@@ -37,85 +34,11 @@ const industries = [
 
 const HomePage: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
-  const [authReady, setAuthReady] = useState(false);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsAuth(false);
-  };
-
-  useEffect(() => {
-    const checkAuth = () => {
-      const token = localStorage.getItem("token");
-      setIsAuth(!!token);
-      setAuthReady(true);
-    };
-
-    checkAuth();
-
-    window.addEventListener("auth-change", checkAuth);
-    return () => window.removeEventListener("auth-change", checkAuth);
-  }, []);
 
   return (
     <>
       <div className={styles.app}>
-        <header className={styles.header}>
-          <img src="images/logo.png" alt="BotNestAI" />
-          <nav>
-            <a href="#industries">Industries</a>
-            <a href="#plans">Plans</a>
-            <a href="#contact">Contacts</a>
-          </nav>
-          <nav>
-            <div className={styles.buttonsWrapper}>
-              {!authReady ? null : !isAuth ? (
-                <>
-                  <Button
-                    color="orange"
-                    variant="solid"
-                    size="small"
-                    onClick={() => setIsLoginOpen(true)}
-                  >
-                    Sign in
-                  </Button>
-
-                  <Button
-                    type="text"
-                    variant="text"
-                    size="small"
-                    style={{ color: "white" }}
-                    onClick={() => setIsRegisterOpen(true)}
-                  >
-                    Sign up
-                  </Button>
-                </>
-              ) : (
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <Button
-                    variant="solid"
-                    color="orange"
-                    icon={<CompassOutlined />}
-                  >
-                    My organizations
-                  </Button>
-
-                  <Button
-                    variant="link"
-                    type="text"
-                    style={{ color: "white" }}
-                    onClick={handleLogout}
-                  >
-                    Sign out
-                  </Button>
-                </div>
-              )}
-            </div>
-          </nav>
-        </header>
-
+        <Header isRegisterModalOpen={isRegisterOpen} />
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <h2>Intelligent Consultant Bots for Your Business</h2>
@@ -168,26 +91,6 @@ const HomePage: React.FC = () => {
           <p>© 2025 FoxChat.ai — All rights reserved.</p>
         </footer>
       </div>
-      <Modal
-        isOpen={isRegisterOpen}
-        onClose={() => setIsRegisterOpen(false)}
-        title="Sign Up"
-      >
-        <Register
-          handleClose={() => setIsRegisterOpen(false)}
-          handleSignInModalOpen={() => setIsLoginOpen(true)}
-        />
-      </Modal>
-      <Modal
-        isOpen={isLoginOpen}
-        onClose={() => setIsLoginOpen(false)}
-        title="Sign In"
-      >
-        <Login
-          handleClose={() => setIsLoginOpen(false)}
-          handleSignUpModalOpen={() => setIsRegisterOpen(true)}
-        />
-      </Modal>
     </>
   );
 };
