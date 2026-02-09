@@ -38,6 +38,7 @@ const HomePage: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -48,6 +49,7 @@ const HomePage: React.FC = () => {
     const checkAuth = () => {
       const token = localStorage.getItem("token");
       setIsAuth(!!token);
+      setAuthReady(true);
     };
 
     checkAuth();
@@ -68,7 +70,7 @@ const HomePage: React.FC = () => {
           </nav>
           <nav>
             <div className={styles.buttonsWrapper}>
-              {!isAuth ? (
+              {!authReady ? null : !isAuth ? (
                 <>
                   <Button
                     color="orange"
@@ -78,6 +80,7 @@ const HomePage: React.FC = () => {
                   >
                     Sign in
                   </Button>
+
                   <Button
                     type="text"
                     variant="text"
@@ -93,6 +96,7 @@ const HomePage: React.FC = () => {
                   <Button variant="solid" color="orange">
                     My organizations
                   </Button>
+
                   <Button
                     variant="link"
                     type="text"
