@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.scss";
-import Button from "@/components/_elements/button/button";
 import Register from "@/components/register/register";
 import Modal from "@/components/_elements/modal/modal";
 import Login from "@/components/login/login";
+import { Button } from "antd";
 
 const plans = [
   {
@@ -70,20 +70,29 @@ const HomePage: React.FC = () => {
             <div className={styles.buttonsWrapper}>
               {!isAuth ? (
                 <>
-                  <button
-                    className={styles.signInButton}
+                  <Button
+                    color="orange"
+                    variant="solid"
+                    size="small"
                     onClick={() => setIsLoginOpen(true)}
                   >
                     Sign in
-                  </button>
-                  <Button size="small" onClick={() => setIsRegisterOpen(true)}>
+                  </Button>
+                  <Button
+                    type="text"
+                    variant="text"
+                    size="small"
+                    style={{ color: "white" }}
+                    onClick={() => setIsRegisterOpen(true)}
+                  >
                     Sign up
                   </Button>
                 </>
               ) : (
-                <Button size="small" onClick={handleLogout}>
-                  Sign out
-                </Button>
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <Button onClick={handleLogout}>My organizations</Button>
+                  <button onClick={handleLogout}>Sign out</button>
+                </div>
               )}
             </div>
           </nav>
@@ -96,12 +105,14 @@ const HomePage: React.FC = () => {
               Automate customer communication and increase sales with AI bots
               for any industry.
             </p>
+
             <Button
               size="large"
-              width="auto"
+              variant="solid"
+              color="orange"
               onClick={() => setIsRegisterOpen(true)}
             >
-              Get started — it's free
+              Get started
             </Button>
           </div>
         </section>
@@ -130,7 +141,6 @@ const HomePage: React.FC = () => {
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
-                <Button size="medium">Select</Button>
               </div>
             ))}
           </div>

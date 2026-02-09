@@ -2,7 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from "./../register/register.module.scss";
-import Button from "../_elements/button/button";
+import { Button, Flex } from "antd";
 
 interface ILogin {
   handleClose: () => void;
@@ -45,10 +45,18 @@ export default function Login({ handleClose, handleSignUpModalOpen }: ILogin) {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.header}>
-        <p>Not a member?</p>
-        <button type="button" onClick={handleCloseModalAndOpenRegister}>
-          Sign Up
-        </button>
+        <Flex gap="5px" align="center">
+          <p>Not a member?</p>
+          <Button
+            type="text"
+            variant="link"
+            size="small"
+            color="orange"
+            onClick={handleCloseModalAndOpenRegister}
+          >
+            Sign up
+          </Button>
+        </Flex>
       </div>
 
       <div className={styles.field}>
@@ -74,8 +82,8 @@ export default function Login({ handleClose, handleSignUpModalOpen }: ILogin) {
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <Button disabled={loading} size="medium">
-        {loading ? "Signing in..." : "Sign in"}
+      <Button size="large" variant="solid" color="orange" loading={loading}>
+        Sign in
       </Button>
     </form>
   );

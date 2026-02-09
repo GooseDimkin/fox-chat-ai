@@ -2,7 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from "./register.module.scss";
-import Button from "../_elements/button/button";
+import { Button, Flex } from "antd";
 
 interface IRegister {
   handleClose: () => void;
@@ -47,8 +47,18 @@ export default function Register({
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.header}>
-        <p>Already a member?</p>
-        <button onClick={handleCloseModalAndOpenSignIn}>Sign In</button>
+        <Flex gap="5px" align="center">
+          <p>Already a member?</p>
+          <Button
+            size="small"
+            variant="link"
+            type="text"
+            color="orange"
+            onClick={handleCloseModalAndOpenSignIn}
+          >
+            Sign in
+          </Button>
+        </Flex>
       </div>
       <div className={styles.field}>
         <input
@@ -73,8 +83,13 @@ export default function Register({
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <Button disabled={loading} size="medium">
-        {loading ? "Creating account..." : "Create account"}
+      <Button
+        color="orange"
+        variant="solid"
+        loading={loading}
+        onClick={handleSubmit}
+      >
+        Create account
       </Button>
 
       <p className={styles.footerText}>

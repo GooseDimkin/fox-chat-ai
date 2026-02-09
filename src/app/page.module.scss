@@ -58,18 +58,6 @@
     display: flex;
     column-gap: 20px;
   }
-  .signInButton {
-    background-color: transparent;
-    border: none;
-    font-size: 16px;
-    transition: 0.2s;
-
-    &:hover {
-      color: $mainOrange;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-  }
 }
 
 .hero {
@@ -180,6 +168,7 @@
   flex-wrap: wrap;
   max-width: 900px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .planCard {

@@ -6,5 +6,6 @@ export interface IButton {
   size?: "small" | "medium" | "large";
   width?: string;
   disabled?: boolean;
-  color?: "default" | "secondary"
+  color?: "default" | "secondary";
+  type?: "primary" | "text";
 }
