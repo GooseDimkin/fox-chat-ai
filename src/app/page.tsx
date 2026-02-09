@@ -5,6 +5,7 @@ import Register from "@/components/register/register";
 import Modal from "@/components/_elements/modal/modal";
 import Login from "@/components/login/login";
 import { Button } from "antd";
+import { CompassOutlined, UserOutlined } from "@ant-design/icons";
 
 const plans = [
   {
@@ -93,7 +94,11 @@ const HomePage: React.FC = () => {
                 </>
               ) : (
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <Button variant="solid" color="orange">
+                  <Button
+                    variant="solid"
+                    color="orange"
+                    icon={<CompassOutlined />}
+                  >
                     My organizations
                   </Button>
 
