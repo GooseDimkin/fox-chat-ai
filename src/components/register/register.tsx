@@ -24,15 +24,15 @@ export default function Register({
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3001/auth/register", {
+      await axios.post("http://localhost:3001/auth/register", {
         email,
         password,
       });
 
-      alert(`Registered: ${res.data.email}`);
+      handleClose();
     } catch (err: any) {
       setError(
-        err?.response?.data?.message || "Something went wrong. Try again."
+        err?.response?.data?.message || "Something went wrong. Try again.",
       );
     } finally {
       setLoading(false);
@@ -73,7 +73,7 @@ export default function Register({
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <Button disabled={loading} size="large">
+      <Button disabled={loading} size="medium">
         {loading ? "Creating account..." : "Create account"}
       </Button>
 

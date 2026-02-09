@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import Button from "@/components/_elements/button/button";
 import Register from "@/components/register/register";
 import Modal from "@/components/_elements/modal/modal";
+import Login from "@/components/login/login";
 
 const plans = [
   {
@@ -36,6 +37,24 @@ const industries = [
 const HomePage: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuth(false);
+  };
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      setIsAuth(!!token);
+    };
+
+    checkAuth();
+
+    window.addEventListener("auth-change", checkAuth);
+    return () => window.removeEventListener("auth-change", checkAuth);
+  }, []);
 
   return (
     <>
@@ -49,15 +68,23 @@ const HomePage: React.FC = () => {
           </nav>
           <nav>
             <div className={styles.buttonsWrapper}>
-              <button
-                className={styles.signInButton}
-                onClick={() => setIsLoginOpen(true)}
-              >
-                Sign in
-              </button>
-              <Button size="small" onClick={() => setIsRegisterOpen(true)}>
-                Sign Up
-              </Button>
+              {!isAuth ? (
+                <>
+                  <button
+                    className={styles.signInButton}
+                    onClick={() => setIsLoginOpen(true)}
+                  >
+                    Sign in
+                  </button>
+                  <Button size="small" onClick={() => setIsRegisterOpen(true)}>
+                    Sign up
+                  </Button>
+                </>
+              ) : (
+                <Button size="small" onClick={handleLogout}>
+                  Sign out
+                </Button>
+              )}
             </div>
           </nav>
         </header>
@@ -128,7 +155,10 @@ const HomePage: React.FC = () => {
         onClose={() => setIsLoginOpen(false)}
         title="Sign In"
       >
-        <div>Login form here</div>
+        <Login
+          handleClose={() => setIsLoginOpen(false)}
+          handleSignUpModalOpen={() => setIsRegisterOpen(true)}
+        />
       </Modal>
     </>
   );

@@ -1,38 +1,82 @@
-"use client"
+"use client";
 import { useState } from "react";
 import axios from "axios";
+import styles from "./../register/register.module.scss";
+import Button from "../_elements/button/button";
 
-export default function Login() {
+interface ILogin {
+  handleClose: () => void;
+  handleSignUpModalOpen: () => void;
+}
+
+export default function Login({ handleClose, handleSignUpModalOpen }: ILogin) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
     try {
       const res = await axios.post("http://localhost:3001/auth/login", {
         email,
         password,
       });
+
       localStorage.setItem("token", res.data.access_token);
-      alert("Logged in!");
-    } catch {
-      alert("Invalid credentials");
+      window.dispatchEvent(new Event("auth-change"));
+
+      handleClose();
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Invalid email or password");
+    } finally {
+      setLoading(false);
     }
   };
 
+  const handleCloseModalAndOpenRegister = () => {
+    handleClose();
+    handleSignUpModalOpen();
+  };
+
   return (
-    <div>
-      <input
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <input
-        value={password}
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-      <button onClick={handleLogin}>Login</button>
-    </div>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.header}>
+        <p>Not a member?</p>
+        <button type="button" onClick={handleCloseModalAndOpenRegister}>
+          Sign Up
+        </button>
+      </div>
+
+      <div className={styles.field}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+
+      <div className={styles.field}>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          minLength={6}
+        />
+      </div>
+
+      {error && <div className={styles.error}>{error}</div>}
+
+      <Button disabled={loading} size="medium">
+        {loading ? "Signing in..." : "Sign in"}
+      </Button>
+    </form>
   );
 }
