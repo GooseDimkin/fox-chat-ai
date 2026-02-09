@@ -82,7 +82,13 @@ export default function Login({ handleClose, handleSignUpModalOpen }: ILogin) {
 
       {error && <div className={styles.error}>{error}</div>}
 
-      <Button size="large" variant="solid" color="orange" loading={loading}>
+      <Button
+        size="large"
+        variant="solid"
+        color="orange"
+        loading={loading}
+        onClick={handleSubmit}
+      >
         Sign in
       </Button>
     </form>

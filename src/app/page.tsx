@@ -90,8 +90,17 @@ const HomePage: React.FC = () => {
                 </>
               ) : (
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <Button onClick={handleLogout}>My organizations</Button>
-                  <button onClick={handleLogout}>Sign out</button>
+                  <Button variant="solid" color="orange">
+                    My organizations
+                  </Button>
+                  <Button
+                    variant="link"
+                    type="text"
+                    style={{ color: "white" }}
+                    onClick={handleLogout}
+                  >
+                    Sign out
+                  </Button>
                 </div>
               )}
             </div>
