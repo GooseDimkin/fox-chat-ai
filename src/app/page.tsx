@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
               color="orange"
               onClick={() => setIsRegisterOpen(true)}
             >
-              Get started
+              Get started — it's free
             </Button>
           </div>
         </section>
